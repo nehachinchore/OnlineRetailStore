@@ -5,13 +5,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -33,8 +31,6 @@ public class JsonUtils {
 
 	public static String getJson(Object object) {
 		ObjectMapper objectMapper = new ObjectMapper();
-		objectMapper.registerModule(new Hibernate4Module().disable(Hibernate4Module.Feature.USE_TRANSIENT_ANNOTATION))
-				.setSerializationInclusion(Include.NON_NULL);
 		objectMapper.configure(SerializationFeature.WRITE_EMPTY_JSON_ARRAYS, false);
 		objectMapper.setVisibility(PropertyAccessor.ALL, Visibility.ANY);
 		String json = null;
