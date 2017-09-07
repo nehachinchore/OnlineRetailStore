@@ -39,8 +39,8 @@ public class ProductService {
 		return productDao.add(product);
 	}
 
-	public Product get(Integer categoryId) {
-		return productDao.get(categoryId);
+	public Product get(Integer productId) {
+		return productDao.get(productId);
 	}
 
 }

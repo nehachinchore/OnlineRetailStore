@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import com.retailstore.pojo.Category;
 import com.retailstore.pojo.Product;
+import com.retailstore.pojo.Transaction;
 
 import io.dropwizard.configuration.ConfigurationException;
 
@@ -17,6 +18,7 @@ public class OnlineRetailStoreContext {
 	private static OnlineRetailStoreContext instance = null;
 	private static HashMap<Integer, Product> product = new HashMap<>();
 	private static HashMap<Integer, Category> category = new HashMap<>();
+	private static HashMap<Integer, Transaction> transactions = new HashMap<>();
 
 	private OnlineRetailStoreContext(OnlineRetailStoreConfiguration config) {
 		this.config = config;
@@ -83,4 +85,9 @@ public class OnlineRetailStoreContext {
 	public static HashMap<Integer, Category> getCategory() {
 		return category;
 	}
+
+	public static HashMap<Integer, Transaction> getTransactions() {
+		return transactions;
+	}
+
 }

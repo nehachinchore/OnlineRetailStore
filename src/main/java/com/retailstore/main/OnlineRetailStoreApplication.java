@@ -14,12 +14,14 @@ import org.eclipse.jetty.servlets.CrossOriginFilter;
 
 import com.retailstore.dao.CategoryDao;
 import com.retailstore.dao.ProductDao;
+import com.retailstore.dao.TransactionDao;
 import com.retailstore.resources.CategoryResource;
 import com.retailstore.resources.ProductResource;
-import com.retailstore.resources.RetailStoreResource;
+import com.retailstore.resources.BillResource;
 import com.retailstore.services.CategoryService;
 import com.retailstore.services.ProductService;
-import com.retailstore.services.RetialStoreService;
+import com.retailstore.services.BillService;
+import com.retailstore.services.TransactionService;
 
 import io.dropwizard.Application;
 import io.dropwizard.server.DefaultServerFactory;
@@ -53,22 +55,24 @@ public class OnlineRetailStoreApplication extends Application<OnlineRetailStoreC
 
 	@Override
 	public void run(OnlineRetailStoreConfiguration configuration, Environment environment) throws Exception {
-		
+
 		((DefaultServerFactory) configuration.getServerFactory()).setJerseyRootPath("/store/*");
 		// Dao registeration
 		ProductDao productDao = new ProductDao();
 		CategoryDao cateogoryDao = new CategoryDao();
+		TransactionDao transactionDao = new TransactionDao();
 
 		// service registration
-		RetialStoreService retailStoreService = new RetialStoreService();
 		ProductService productService = new ProductService(productDao);
 		CategoryService categoryService = new CategoryService(cateogoryDao);
+		TransactionService transactionService = new TransactionService(transactionDao);
+		BillService retailStoreService = new BillService(productService, categoryService,transactionService);
 
 		// context initialization
 		OnlineRetailStoreContext.init(configuration);
 
 		// resource registration
-		environment.jersey().register(new RetailStoreResource(retailStoreService));
+		environment.jersey().register(new BillResource(retailStoreService));
 		environment.jersey().register(new ProductResource(productService));
 		environment.jersey().register(new CategoryResource(categoryService));
 
