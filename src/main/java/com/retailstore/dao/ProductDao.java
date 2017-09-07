@@ -5,6 +5,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import com.retailstore.main.OnlineRetailStoreContext;
+import com.retailstore.pojo.Category;
 import com.retailstore.pojo.Product;
 
 public class ProductDao {
@@ -29,7 +30,12 @@ public class ProductDao {
 		}
 		Integer last = set.last();
 		Integer productId = last + 1;
-		product.setProductId(productId);
+		Product newProdcut = new Product();
+		newProdcut.setProductId(productId);
+		newProdcut.setCost(product.getCost());
+		Category category = OnlineRetailStoreContext.getCategory().get(product.getCategory().getCategoryId());
+		newProdcut.setCategory(category);
+		newProdcut.setProductName(product.getProductName());
 		return OnlineRetailStoreContext.getProduct().put(productId, product);
 	}
 }

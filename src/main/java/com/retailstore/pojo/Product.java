@@ -1,11 +1,20 @@
 package com.retailstore.pojo;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer productId;
 	private Float cost;
 	private Category category;
 	private String productName;
 
+	public Product(){
+	}
+	
 	public Integer getProductId() {
 		return productId;
 	}

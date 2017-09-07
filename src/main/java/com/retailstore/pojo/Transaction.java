@@ -1,13 +1,22 @@
 package com.retailstore.pojo;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Transaction {
+public class Transaction implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Integer transactionId;
 	List<TransactionItem> items;
 	Float totalCost;
 	Float totalTax;
 	Float grandTotal;
+
+	public Transaction() {
+
+	}
 
 	public Integer getTransactionId() {
 		return transactionId;

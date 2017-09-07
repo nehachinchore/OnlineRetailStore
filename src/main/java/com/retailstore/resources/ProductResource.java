@@ -1,5 +1,6 @@
 package com.retailstore.resources;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -39,6 +40,7 @@ public class ProductResource {
 	}
 
 	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
 	public Response add(Product product) {
 		Product newProduct = productService.add(product);
 		return Response.ok(JsonUtils.getJson(newProduct)).build();
