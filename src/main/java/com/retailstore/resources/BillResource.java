@@ -10,15 +10,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.retailstore.auth.AuthUser;
 import com.retailstore.common.JsonUtils;
 import com.retailstore.common.URLConstant;
 import com.retailstore.exception.StoreException;
 import com.retailstore.pojo.Transaction;
 import com.retailstore.pojo.TransactionItem;
 import com.retailstore.services.BillService;
-
-import io.dropwizard.auth.Auth;
 
 @Path(URLConstant.BILL)
 @Produces(MediaType.APPLICATION_JSON)
