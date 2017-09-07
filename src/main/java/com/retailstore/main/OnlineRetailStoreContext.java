@@ -36,43 +36,22 @@ public class OnlineRetailStoreContext {
 	public static OnlineRetailStoreContext init(OnlineRetailStoreConfiguration configuration)
 			throws ConfigurationException, IOException {
 		instance = new OnlineRetailStoreContext(configuration);
-		Category cat = new Category();
-		cat.setCategoryId(1);
-		cat.setCategoryType("categoryA");
-		cat.setTax(0.1f);
+		Category cat = new Category(1, 0.1f, "categoryA");
 		category.put(1, cat);
 
-		Category cat1 = new Category();
-		cat1.setCategoryId(2);
-		cat1.setCategoryType("categoryB");
-		cat1.setTax(0.2f);
+		Category cat1 = new Category(2, 0.2f, "categoryB");
 		category.put(2, cat1);
 
-		Category cat2 = new Category();
-		cat2.setCategoryId(3);
-		cat2.setCategoryType("categoryC");
-		cat2.setTax(0f);
+		Category cat2 = new Category(3, 0f, "categoryC");
 		category.put(3, cat2);
 
-		Product prod = new Product();
-		prod.setProductId(1);
-		prod.setCategory(cat);
-		prod.setProductName("maggi");
-		prod.setCost(15f);
+		Product prod = new Product(1, 15f, cat, "maggi");
 		product.put(1, prod);
 
-		Product prod1 = new Product();
-		prod1.setProductId(2);
-		prod1.setCategory(cat);
-		prod1.setProductName("makhana");
-		prod1.setCost(100f);
+		Product prod1 = new Product(2, 100f, cat1, "makhana");
 		product.put(2, prod1);
 
-		Product prod2 = new Product();
-		prod2.setProductId(3);
-		prod2.setCategory(cat);
-		prod2.setProductName("biscuits");
-		prod2.setCost(20f);
+		Product prod2 = new Product(2, 20f, cat2, "biscuits");
 		product.put(3, prod2);
 
 		return get();

@@ -1,4 +1,4 @@
-package com.retailstore.auth;
+/*package com.retailstore.auth;
 
 import com.google.common.base.Optional;
 
@@ -29,3 +29,4 @@ public class WebAuthenticator implements Authenticator<BasicCredentials, AuthUse
 	}
 
 }
+*/

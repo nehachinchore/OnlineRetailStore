@@ -1,4 +1,4 @@
-package com.retailstore.auth;
+/*package com.retailstore.auth;
 
 public class AuthUser {
 	private String type;
@@ -25,3 +25,4 @@ public class AuthUser {
 	}
 
 }
+*/

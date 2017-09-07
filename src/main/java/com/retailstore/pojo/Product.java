@@ -12,9 +12,13 @@ public class Product implements Serializable {
 	private Category category;
 	private String productName;
 
-	public Product(){
+	public Product(Integer productId, Float cost, Category category, String productName) {
+		this.productId = productId;
+		this.cost = cost;
+		this.category = category;
+		this.productName = productName;
 	}
-	
+
 	public Integer getProductId() {
 		return productId;
 	}

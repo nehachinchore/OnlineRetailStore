@@ -30,12 +30,8 @@ public class ProductDao {
 		}
 		Integer last = set.last();
 		Integer productId = last + 1;
-		Product newProdcut = new Product();
-		newProdcut.setProductId(productId);
-		newProdcut.setCost(product.getCost());
 		Category category = OnlineRetailStoreContext.getCategory().get(product.getCategory().getCategoryId());
-		newProdcut.setCategory(category);
-		newProdcut.setProductName(product.getProductName());
+		Product newProdcut = new Product(productId, product.getCost(), category, product.getProductName());
 		OnlineRetailStoreContext.getProduct().put(productId, newProdcut);
 		return OnlineRetailStoreContext.getProduct().get(productId);
 	}
