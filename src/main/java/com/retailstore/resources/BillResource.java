@@ -34,7 +34,7 @@ public class BillResource {
 
 	@GET
 	@Path("/{transactionId}")
-	public Response generateBill(@Auth AuthUser auth, @PathParam("transactionId") Integer transactionId) {
+	public Response generateBill(@PathParam("transactionId") Integer transactionId) {
 		//if (auth.getType().equals(AuthUser.Roles.READ_ONLY)) {
 			try {
 				Transaction transaction = retailStoreService.generateBill(transactionId);

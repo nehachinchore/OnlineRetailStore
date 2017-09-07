@@ -18,12 +18,17 @@ public class TransactionDao {
 
 	public Integer create(TransactionItem transactionItem) {
 		Set<Integer> keySet = OnlineRetailStoreContext.getTransactions().keySet();
-		SortedSet<Integer> set = new TreeSet<>();
-		for (Integer integer : keySet) {
-			set.add(integer);
+		Integer transactionId = 0;
+		if (!keySet.isEmpty()) {
+			SortedSet<Integer> set = new TreeSet<>();
+			for (Integer integer : keySet) {
+				set.add(integer);
+			}
+			Integer last = set.last();
+			transactionId = last + 1;
+		}else{
+			transactionId = 1;
 		}
-		Integer last = set.last();
-		Integer transactionId = last + 1;
 		Transaction transaction = new Transaction();
 		transaction.setTransactionId(transactionId);
 		transaction.getItems().add(transactionItem);

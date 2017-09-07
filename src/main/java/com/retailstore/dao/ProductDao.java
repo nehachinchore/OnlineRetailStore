@@ -36,6 +36,7 @@ public class ProductDao {
 		Category category = OnlineRetailStoreContext.getCategory().get(product.getCategory().getCategoryId());
 		newProdcut.setCategory(category);
 		newProdcut.setProductName(product.getProductName());
-		return OnlineRetailStoreContext.getProduct().put(productId, product);
+		OnlineRetailStoreContext.getProduct().put(productId, newProdcut);
+		return OnlineRetailStoreContext.getProduct().get(productId);
 	}
 }

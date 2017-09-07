@@ -1,6 +1,7 @@
 package com.retailstore.pojo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Transaction implements Serializable {
@@ -9,7 +10,7 @@ public class Transaction implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	Integer transactionId;
-	List<TransactionItem> items;
+	List<TransactionItem> items = new ArrayList<>();
 	Float totalCost;
 	Float totalTax;
 	Float grandTotal;

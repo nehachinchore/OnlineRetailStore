@@ -8,10 +8,10 @@ public class TransactionItem implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	Integer productId;
-	Integer productQuantity;
-	Float costWithoutTax;
-	Float serviceTax;
+	int productId;
+	int productQuantity;
+	float costWithoutTax;
+	float serviceTax;
 
 	public TransactionItem() {
 
@@ -25,27 +25,27 @@ public class TransactionItem implements Serializable {
 		this.productId = productId;
 	}
 
-	public Integer getProductQuantity() {
+	public int getProductQuantity() {
 		return productQuantity;
 	}
 
-	public void setProductQuantity(Integer productQuantity) {
+	public void setProductQuantity(int productQuantity) {
 		this.productQuantity = productQuantity;
 	}
 
-	public Float getCostWithoutTax() {
+	public float getCostWithoutTax() {
 		return costWithoutTax;
 	}
 
-	public void setCostWithoutTax(Float costWithoutTax) {
+	public void setCostWithoutTax(float costWithoutTax) {
 		this.costWithoutTax = costWithoutTax;
 	}
 
-	public Float getServiceTax() {
+	public float getServiceTax() {
 		return serviceTax;
 	}
 
-	public void setServiceTax(Float serviceTax) {
+	public void setServiceTax(float serviceTax) {
 		this.serviceTax = serviceTax;
 	}
 
