@@ -32,7 +32,7 @@ logging:
   loggers:
 
     # Sets the level for 'com.example.app' to DEBUG.
-    com.retailstore: DEBUG
+    com.retailstore: INFO
 
   appenders:
     - type: console

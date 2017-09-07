@@ -4,26 +4,18 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* Online Retail Store
+* Version : 1.0
+* [OnlineRetailStore](https://github.com/nehachinchore/OnlineRetailStore)
 
 ### How do I get set up? ###
+* Prerequisites :
+   1. JAVA 1.7 or newer
+   2. Maven 3.0 or newer
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* Deployment Details:
+   1. Clone github project from repository https://github.com/nehachinchore/OnlineRetailStore
+   2. Checkout master branch
+   3. cd OnlineRetailStore
+   4. Run command on specified location : mvn install  
+   5. Once maven installation is completed run at same location: java -jar target/services-0.0.1-SNAPSHOT.jar server store.yml
