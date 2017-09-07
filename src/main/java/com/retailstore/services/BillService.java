@@ -37,6 +37,9 @@ public class BillService {
 		Transaction transaction;
 		try {
 			transaction = transactionService.get(transactionId);
+			if(transaction == null){
+				throw new StoreException("2", "TransactionID is Invalid");
+			}
 		} catch (StoreServerException e) {
 			throw new StoreException("servererror",
 					"Failed to generate bill for transaction " + transactionId + " due to " + e);

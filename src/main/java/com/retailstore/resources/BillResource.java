@@ -35,7 +35,7 @@ public class BillResource {
 	@GET
 	@Path("/{transactionId}")
 	public Response generateBill(@Auth AuthUser auth, @PathParam("transactionId") Integer transactionId) {
-		if (auth.getType().equals(AuthUser.Roles.READ_ONLY)) {
+		//if (auth.getType().equals(AuthUser.Roles.READ_ONLY)) {
 			try {
 				Transaction transaction = retailStoreService.generateBill(transactionId);
 				return Response.ok(JsonUtils.getJson(transaction)).build();
@@ -48,14 +48,14 @@ public class BillResource {
 				}
 				return Response.status(Status.BAD_REQUEST).entity(JsonUtils.getErrorJson(e.getMessage())).build();
 			}
-		} else {
+			/*} else {
 			return Response.status(Status.UNAUTHORIZED).build();
-		}
+		}*/
 	}
 
 	@POST
 	@Path("/{transactionId}")
-	public Response createOrUpdateBill(@Auth AuthUser auth, @PathParam("transactionId") Integer transactionId,
+	public Response createOrUpdateBill(@PathParam("transactionId") Integer transactionId,
 			TransactionItem transactionItem) {
 		//if (auth.getType().equals(AuthUser.Roles.READ_ONLY)) {
 			try {
