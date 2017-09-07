@@ -1,0 +1,9 @@
+/dependency-reduced-pom.xml
+/target
+/.settings/
+/target/
+/bin/
+/derby.log
+.idea/
+jtservices.iml
+src/main/resources/lib/

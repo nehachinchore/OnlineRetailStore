@@ -1,0 +1,45 @@
+server:
+#  softNofileLimit: 1000
+#  hardNofileLimit: 1000
+  applicationConnectors:
+    - type: http
+      port: 9080
+    - type: https
+      port: 9443
+      keyStorePath: store.keystore
+      keyStorePassword: example
+      validateCerts: false
+  adminConnectors:
+    - type: http
+      port: 9081
+    - type: https
+      port: 9444
+      keyStorePath: store.keystore
+      keyStorePassword: example
+      validateCerts: false
+  requestLog:
+    appenders:
+       - type: console
+         queueSize: 2048    
+
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: OFF
+
+  # Logger-specific levels.
+  loggers:
+
+    # Sets the level for 'com.example.app' to DEBUG.
+    com.retailstore: DEBUG
+
+  appenders:
+    - type: console
+    - type: file
+      threshold: TRACE
+      logFormat: "[%d{YYYY-MM-dd_HH:mm:ss.SSS}] %-6level [%t] %logger{5} - %X{code} %msg %n"
+      currentLogFilename: /home/logs/store-application.debug
+      archivedLogFilenamePattern: /home/logs/store-application-%d{yyyy-MM-dd}.log
+      archivedFileCount: 7
+      timeZone: UTC
