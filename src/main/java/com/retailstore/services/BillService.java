@@ -69,16 +69,19 @@ public class BillService {
 	 * @return
 	 * @throws StoreException
 	 */
-	public Integer createorUpdateNewBill(TransactionItem transactionItem, Integer transactionId) throws StoreException {
-		if (transactionItem.getProductId() <= 0) {
-			log.log(Level.SEVERE, "Product ID is Invalid");
-			throw new StoreException("1", "Product ID is Invalid");
+	public Integer createorUpdateNewBill(List<TransactionItem> transactionItems, Integer transactionId) throws StoreException {
+		for (TransactionItem transactionItem : transactionItems) {
+			if (transactionItem.getProductId() <= 0) {
+				log.log(Level.SEVERE, "Product ID is Invalid");
+				throw new StoreException("1", "Product ID is Invalid");
+			}
+			if (transactionItem.getProductQuantity() <= 0) {
+				transactionItem.setProductQuantity(1);
+			}
 		}
-		if (transactionItem.getProductQuantity() <= 0) {
-			transactionItem.setProductQuantity(1);
-		}
+		
 		try {
-			return transactionService.createorUpdateTransaction(transactionItem, transactionId);
+			return transactionService.createorUpdateTransaction(transactionItems, transactionId);
 		} catch (StoreServerException e) {
 			log.log(Level.SEVERE,
 					"Failed to create or update new bill due to " + e + " for transaction id " + transactionId);

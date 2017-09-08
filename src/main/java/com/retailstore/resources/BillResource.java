@@ -1,5 +1,7 @@
 package com.retailstore.resources;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -53,10 +55,10 @@ public class BillResource {
 	@POST
 	@Path("/{transactionId}")
 	public Response createOrUpdateBill(@PathParam("transactionId") Integer transactionId,
-			TransactionItem transactionItem) {
+			List<TransactionItem> transactionItems) {
 		//if (auth.getType().equals(AuthUser.Roles.READ_ONLY)) {
 			try {
-				Integer newTransactionId = retailStoreService.createorUpdateNewBill(transactionItem, transactionId);
+				Integer newTransactionId = retailStoreService.createorUpdateNewBill(transactionItems, transactionId);
 				return Response.ok(JsonUtils.getJson(newTransactionId)).build();
 			} catch (StoreException e) {
 				if (e.getErrorCode().equalsIgnoreCase(SERVERERROR)) {

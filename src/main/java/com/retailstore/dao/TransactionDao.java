@@ -1,5 +1,6 @@
 package com.retailstore.dao;
 
+import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -10,13 +11,13 @@ import com.retailstore.pojo.TransactionItem;
 
 public class TransactionDao {
 
-	public void update(TransactionItem transactionItem, Integer transactionId) {
+	public void update(List<TransactionItem> transactionItem, Integer transactionId) {
 		Transaction transaction = OnlineRetailStoreContext.getTransactions().get(transactionId);
-		transaction.getItems().add(transactionItem);
+		transaction.getItems().addAll(transactionItem);
 		OnlineRetailStoreContext.getTransactions().put(transactionId, transaction);
 	}
 
-	public Integer create(TransactionItem transactionItem) {
+	public Integer create(List<TransactionItem> transactionItem) {
 		Set<Integer> keySet = OnlineRetailStoreContext.getTransactions().keySet();
 		Integer transactionId = 0;
 		if (!keySet.isEmpty()) {
@@ -31,7 +32,7 @@ public class TransactionDao {
 		}
 		Transaction transaction = new Transaction();
 		transaction.setTransactionId(transactionId);
-		transaction.getItems().add(transactionItem);
+		transaction.getItems().addAll(transactionItem);
 		OnlineRetailStoreContext.getTransactions().put(transactionId, transaction);
 		return transactionId;
 

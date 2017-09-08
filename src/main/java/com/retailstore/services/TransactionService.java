@@ -1,5 +1,7 @@
 package com.retailstore.services;
 
+import java.util.List;
+
 import com.retailstore.dao.TransactionDao;
 import com.retailstore.exception.StoreServerException;
 import com.retailstore.pojo.Transaction;
@@ -13,7 +15,7 @@ public class TransactionService {
 		this.transactionDao = transactionDao;
 	}
 
-	public Integer createorUpdateTransaction(TransactionItem transactionItem, Integer transactionId)
+	public Integer createorUpdateTransaction(List<TransactionItem> transactionItem, Integer transactionId)
 			throws StoreServerException {
 		if (transactionId > 0) {
 			transactionDao.update(transactionItem, transactionId);

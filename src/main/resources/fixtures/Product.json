@@ -1,0 +1,10 @@
+{
+    "productId": 2,
+    "cost": 20.0,
+    "category": {
+        "categoryId": 3,
+        "tax": 0.0,
+        "categoryType": "categoryC"
+    },
+    "productName": "biscuits"
+}
